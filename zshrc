@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Useful oh-my-zsh plugins for Le Wagon bootcamps
-plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search)
+plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search pyenv direnv)
 
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -70,3 +70,20 @@ export EDITOR=code
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+
+# GCP service key credentials
+
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/mischadhar/Desktop/.keys/md-laptop.json
+
+# My aliases
+
+alias typora="open -a typora"
+alias jn="jupyter notebook"
+
+# Adding olist folder to Python path
+
+export PYTHONPATH="/Users/mischadhar/code/lewagon/olist:$PYTHONPATH"
+
+# Custom function: jupyter notebook convert to slides w/ hot reload
+
+slidesconvert () { ls *.ipynb | entr -r jupyter nbconvert "$1" --to slides --post serve --no-input}
